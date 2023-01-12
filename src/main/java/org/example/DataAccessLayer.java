@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class DataAccessLayer {
-    double epsilon;
+    double step;
     double a;
     double b;
     double resultIntegral;
@@ -15,12 +15,12 @@ public class DataAccessLayer {
     public String Data() {
         JSONObject file = new JSONObject();
 
-        file.put("Epsilon", epsilon);
-        file.put("A", a);
-        file.put("B", b);
+        file.put("Step", step);
+        file.put("A (upper bound)", a);
+        file.put("B (lower bound)", b);
         file.put("Result", resultIntegral);
 
-        try (PrintWriter out = new PrintWriter(new FileWriter("data.json"))) {
+        try (PrintWriter out = new PrintWriter(new FileWriter("result_integral.json"))) {
             out.write(file.toString());
         } catch (IOException e) {
             throw new RuntimeException(e);

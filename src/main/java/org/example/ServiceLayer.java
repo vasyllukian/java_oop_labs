@@ -2,14 +2,17 @@ package org.example;
 
 public class ServiceLayer {
 
-    double epsilon;
+    double step;
     double a;
     double b;
 
     public String MathModel(){
         DataAccessLayer dataAccessLayer = new DataAccessLayer();
 
-        dataAccessLayer.resultIntegral = Integral();
+        dataAccessLayer.resultIntegral = IntegralUsingSimpsonMethod();
+        dataAccessLayer.a = a;
+        dataAccessLayer.b = b;
+        dataAccessLayer.step = step;
 
         return dataAccessLayer.Data();
     }
@@ -18,8 +21,8 @@ public class ServiceLayer {
         return x;
     }
 
-    public double Integral(){
-        double h = Math.sqrt(Math.sqrt(epsilon));
+    public double IntegralUsingSimpsonMethod(){
+        double h = Math.sqrt(Math.sqrt(step));
         int n = (int) Math.round((b-a)/h);
         n += 4-(n%4);
         h = (b-a)/n;

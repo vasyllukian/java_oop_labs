@@ -2,14 +2,14 @@ package org.example;
 
 public class PresentationLayer {
 
-    double epsilon;
+    double step;
     double a;
     double b;
 
     public void getResult(){
         ServiceLayer serviceLayer = new ServiceLayer();
 
-        serviceLayer.epsilon = epsilon;
+        serviceLayer.step = step;
         serviceLayer.a = a;
         serviceLayer.b = b;
 
